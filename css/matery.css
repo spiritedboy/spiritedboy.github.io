@@ -33,11 +33,22 @@
     }
 }
 
-body {
+/*body {
     background-color: #eaeaea;
     margin: 0;
     color: #34495e;
+}*/
+
+
+body {
+    /*background-color: #eaeaea;*/
+    /*第一个url是模糊渲染，第二个url是背景图片*/
+    background: linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)) 0% 0% / cover, url("https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png"), url("https://ae01.alicdn.com/kf/H21b5f6b8496141a1979a33666e1074d9x.jpg") 0px 0px;
+    background-attachment: fixed;
+    margin: 0;
+    color: #34495e;
 }
+
 
 h1 {
     margin: 48px 0 22px -5px;
@@ -112,13 +123,14 @@ blockquote {
 }
 
 pre {
-    padding: 2.5rem 1.5rem 1.5rem 1.5rem !important;
+    padding: 1.5rem 1.5rem 1.5rem 3.3rem !important;
     margin: 1rem 0 !important;
     background: #272822;
     overflow: auto;
     border-radius: 0.35rem;
     tab-size: 4;
 }
+
 
 .code-area::after {
     content: " ";
@@ -138,7 +150,7 @@ code {
     padding: 1px 5px;
     top: 13px !important;
     font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-    font-size: 0.91rem;
+    /*font-size: 0.91rem;*/
     color: #e96900;
     background-color: #f8f8f8;
     border-radius: 2px;
@@ -2042,3 +2054,4 @@ footer .copy-right {
     padding: 0px;
     margin: 0px;
 }
+
