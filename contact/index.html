@@ -39,7 +39,153 @@
 </head>
 
 
+
+    <style type="text/css" lang="css">
+    #loading-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-height: 100vh;
+        width: 100vw;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #FFF;
+        text-align: center;
+        /* loader页面消失采用渐隐的方式*/
+        -webkit-transition: opacity 1s ease;
+        -moz-transition: opacity 1s ease;
+        -o-transition: opacity 1s ease;
+        transition: opacity 1s ease;
+    }
+    .loading-image{
+        width: 120px;
+        height: 50px;
+        transform: translate(-50%);
+    }
+
+    .loading-image div:nth-child(2) {
+        -webkit-animation: pacman-balls 1s linear 0s infinite;
+        animation: pacman-balls 1s linear 0s infinite
+    }
+
+    .loading-image div:nth-child(3) {
+        -webkit-animation: pacman-balls 1s linear .33s infinite;
+        animation: pacman-balls 1s linear .33s infinite
+    }
+
+    .loading-image div:nth-child(4) {
+        -webkit-animation: pacman-balls 1s linear .66s infinite;
+        animation: pacman-balls 1s linear .66s infinite
+    }
+
+    .loading-image div:nth-child(5) {
+        -webkit-animation: pacman-balls 1s linear .99s infinite;
+        animation: pacman-balls 1s linear .99s infinite
+    }
+
+   .loading-image div:first-of-type {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_up .5s 0s infinite;
+        animation: rotate_pacman_half_up .5s 0s infinite;
+    }
+    .loading-image div:nth-child(2) {
+        width: 0;
+        height: 0;
+        border: 25px solid #49b1f5;
+        border-right-color: transparent;
+        border-radius: 25px;
+        -webkit-animation: rotate_pacman_half_down .5s 0s infinite;
+        animation: rotate_pacman_half_down .5s 0s infinite;
+        margin-top: -50px;
+    }
+    @-webkit-keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+    @-webkit-keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+    @-webkit-keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+    @keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+
+    .loading-image div:nth-child(3),
+    .loading-image div:nth-child(4),
+    .loading-image div:nth-child(5),
+    .loading-image div:nth-child(6){
+        background-color: #49b1f5;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        margin: 2px;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        transform: translateY(-6.25px);
+        top: 25px;
+        left: 100px;
+    }
+    .loading-text{
+        margin-bottom: 20vh;
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2rem;
+        box-sizing: border-box;
+        padding: 0 10px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    @media only screen and (max-width: 500px) {
+         .loading-text{
+            font-size: 1.5rem;
+         }
+    }
+    .fadeout {
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    /* logo出现动画 */
+    @-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
+    @keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
+ </style>
+ <script>
+(function () {
+    const loaded = function(){
+       setTimeout(function(){
+            const loader = document.getElementById("loading-container");
+            loader.className="fadeout" ;//使用渐隐的方法淡出loading page
+            // document.getElementById("body-wrap").style.display="flex";
+            setTimeout(function(){
+                loader.style.display="none";
+            },2500); 
+        },1000);//强制显示loading page 1s  
+    };
+    loaded();
+})()
+</script>
+ 
 <body>
+    
+        <div id="loading-container">
+             <p class="loading-text">嘘~  正在从服务器偷取页面 . . . </p> 
+             <div class="loading-image">
+                 <div></div>
+                 <div></div>
+                 <div></div>
+                 <div></div> 
+                 <div></div>
+             </div>
+        </div>
+    
+
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -296,7 +442,7 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(https://cdn.jsdelivr.net/gh/spiritedboy/spiritedboy.github.io/medias/banner/4.jpg)');
+    $('.bg-cover').css('background-image', 'url(https://cdn.jsdelivr.net/gh/spiritedboy/spiritedboy.github.io/medias/banner/0.jpg)');
 </script>
 
 
@@ -386,16 +532,21 @@
         list-style-type: circle;
     }
 
-    #vcomments table, th, td {
+    #vcomments table,
+    th,
+    td {
         padding: 12px 13px;
         border: 1px solid #dfe2e5;
     }
 
-    #vcomments table, th, td {
+    #vcomments table,
+    th,
+    td {
         border: 0;
     }
 
-    table tr:nth-child(2n), thead {
+    table tr:nth-child(2n),
+    thead {
         background-color: #fafafa;
     }
 
@@ -498,7 +649,8 @@
         color: #e8eaf6;
     }
 
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
         position: inherit;
         margin-left: -1.3rem;
         margin-right: 0.4rem;
@@ -530,12 +682,15 @@
         padding: .2em;
     }
 
-    #vcomments table, th, td {
+    #vcomments table,
+    th,
+    td {
         padding: 12px 13px;
         border: 1px solid #dfe2e5;
     }
 
-    table tr:nth-child(2n), thead {
+    table tr:nth-child(2n),
+    thead {
         background-color: #fafafa;
     }
 
@@ -548,7 +703,8 @@
         min-width: 80px;
     }
 
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
         position: inherit;
         margin-left: -1.3rem;
         margin-right: 0.4rem;
@@ -557,10 +713,17 @@
         left: unset;
         visibility: visible;
     }
+
+    .v[data-class="v"] .vwrap .vheader .vinput {
+        width: 32%;
+        border-bottom: 1px dashed #dedede;
+    }
+    
 </style>
 
 <div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+    <div class="comment_headling"
+        style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
         <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
         <span>评论</span>
     </div>
@@ -569,8 +732,24 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/gh/spiritedboy/spiritedboy.github.io/libs/valine/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/spiritedboy/spiritedboy.github.io/libs/valine/Valine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io/libs/valine/Valine.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/gh/spiritedboy/spiritedboy.github.io/libs/valine/Valine.min.js"></script> -->
 <script>
+    // new Valine({
+    //     el: '#vcomments',
+    //     appId: 'Pvixv42bmw37UuG0EKHbysuB-gzGzoHsz',
+    //     appKey: 'PMT6PP418n3s7geEr1HthlFE',
+    //     notify: 'false' === 'true',
+    //     verify: 'false' === 'true',
+    //     visitor: 'true' === 'true',
+    //     avatar: 'monsterid',
+    //     pageSize: '12',
+    //     lang: 'zh-cn',
+    //     placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!'
+    // });
+    
+    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
+    //这里要换行
     new Valine({
         el: '#vcomments',
         appId: 'Pvixv42bmw37UuG0EKHbysuB-gzGzoHsz',
@@ -578,13 +757,37 @@
         notify: 'false' === 'true',
         verify: 'false' === 'true',
         visitor: 'true' === 'true',
-        avatar: 'mm',
+        avatar: 'monsterid',
         pageSize: '12',
-        lang: 'zh-cn',
-        placeholder: 'just go go'
+        lang: 'zh-CN',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        recordIP: 'true' === 'true',
+        enableQQ: 'monsterid',
+        metaPlaceholder: metaPlaceholder,
     });
-</script>
 
+    document.body.addEventListener('click', function(e) {
+    if (e.target.classList.contains('vsubmit')) {
+        const email = document.querySelector('input[type=email]');
+        const nick = document.querySelector('input[name=nick]');
+        const reg = /^[A-Za-z0-9_-\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        if (!email.value || !nick.value || !reg.test(email.value)) {
+            const str = `<div class="valert txt-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>`;
+            const vmark = document.querySelector('.vmark');
+            vmark.innerHTML = str;
+            vmark.style.display = 'block';
+
+            e.stopPropagation();
+
+            setTimeout(function() {
+                vmark.style.display = 'none';
+                vmark.innerHTML = '';
+            }, 2500);
+        }
+    }
+    }, true);
+
+</script>
             
 			
 			
