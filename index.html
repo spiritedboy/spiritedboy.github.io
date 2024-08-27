@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>港股开户福利</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <main class="container">
+        <h1>港股开户福利</h1>
+        <section class="coupon-list">
+            <article class="coupon-item">
+                <div class="coupon-amount">$1300 HKD</div>
+                <h2 class="coupon-title">「老虎证券」首次净入资1万港币或者1300美元，可得1300港币股票卡，套利到手1000港币</h2>
+                <div class="coupon-rules">
+                    <button class="btn-details">详情</button>
+                    <p>首次入金1万港币方可领取</p>
+                    <p>限未入金的用户</p>
+                    <div class="coupon-rules-details">
+                        <p>1. 首次入金10000HKD，激活300港币股票卡</p>
+                        <p>2. 60天内完成5笔买入交易，激活700港币股票卡</p>
+                        <p>3. 10000港币留存45天，再得300港币股票卡</p>
+                    </div>
+                </div>
+                <div class="coupon-validity">
+                    有效期：2024年7月1日 - 12月31日
+                </div>
+                <div class="coupon-footer">
+                <div class="referral-code"> <span class="referral-label">推荐码</span>
+                    <h1 class="code">MEIGUSHENZ</h1>
+                </div>
+                <a href="https://www.tigersecurities.com/signup?source=inner&invite=MEIGUSHENZ" class="btn-claim" target="_blank" rel="noopener noreferrer">立即领取</a>
+                </div>
+            </article>
+            <article class="coupon-item">
+                <div class="coupon-amount">$800HKD</div>
+                <h2 class="coupon-title">「长桥证券」首次净入资2万港币或者2500美元，港美股终身免佣+400港币股票卡+400港币现金</h2>
+                <div class="coupon-rules">
+                    <button class="btn-details">详情</button>
+                    <p>首次入金2万港币方可领取</p>
+                    <p>限未入金的用户</p>
+                    <div class="coupon-rules-details">
+                        <p>1. 首次入金1万港币，可获得港美股终身免佣</p>
+                        <p>2. 首次入金2万港币，可获得港美股终身免佣+400股票卡</p>
+                        <p>3. 注册后使用推荐码"1U955A"，再得100现金卡+额外返300现金</p>
+                    </div>
+                </div>
+                <div class="coupon-validity">
+                    有效期：2024年7月1日 - 12月31日
+                </div>
+                <div class="coupon-footer">
+                <div class="referral-code"> <span class="referral-label">推荐码</span>
+                    <h1 class="code">1U955A</h1>
+                </div>
+                <a href="https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100035&invite-code=1U955A" class="btn-claim" target="_blank" rel="noopener noreferrer">立即领取</a>
+                </div>
+            </article>
+            <article class="coupon-item">
+                <div class="coupon-amount">$1400 HKD</div>
+                <h2 class="coupon-title">「华盛通」新用户活动，赠送1100港币交易现金券+一股可口可乐，套利到手1400港币</h2>
+                <div class="coupon-rules">
+                    <button class="btn-details">详情</button>
+                    <p>之前开户还没入金也可以在华盛通app填写邀请码E1NC参与新用户活动</p>
+                    <p>首入金金額(或等值)≥HKD10,000/USD1,300</p>
+                    <div class="coupon-rules-details">
+                        <p>1. 一股可口可樂(KO)(~HKD480)</p>
+                        <p>2. 美股買賣180天免佣額度卡(US$1800額度卡)</p>
+                        <p>3. US$25交易现金券</p>
+                        <p>4. HK$300新股認購偃惠券</p>
+                        <p>5. 首入金金额留存達60日，得HK$400交易現金券</p>
+                    </div>
+                </div>
+                <div class="coupon-validity">
+                    有效期：2024年7月1日-12月31日
+                </div>
+                <div class="coupon-footer">
+                <div class="referral-code"> <span class="referral-label">推荐码</span>
+                    <h1 class="code">E1NC</h1>
+                </div>
+                <a href="https://www.hstbroker.com/kh/apply/online?_scnl=E1NC" class="btn-claim" target="_blank" rel="noopener noreferrer">立即领取</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>联系我</h2>
+                <p>微信：haiyyf</p>
+                <p>邮箱：120010021@qq.com</p>
+            </div>
+			<div class="footer-section">
+				<img width="20%" height="20%" src="./weixin.jpg" />
+			</div>
+        </div>
+        <p>© 2024 港股开户福利</p>
+    </footer>
+  </body>
+
+  <script>
+        document.querySelectorAll('.btn-details').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const details = this.parentElement.querySelector('.coupon-rules-details');
+                if (details.style.display === 'none' || details.style.display === '') {
+                    details.style.display = 'block';
+                    this.textContent = '收起';
+                } else {
+                    details.style.display = 'none';
+                    this.textContent = '详情';
+                }
+            });
+        });
+  </script>
+</html>
